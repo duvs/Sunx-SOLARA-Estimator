@@ -1,0 +1,116 @@
+/* General Styling */
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f4f4; /* Lighter background */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container styling */
+.container {
+    width: 100%;
+    max-width: 500px; /* Slightly narrower for that floating feel */
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    border: 1px solid #e1e1e1; /* Light border */
+}
+
+/* Title Styles */
+h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Label Styling */
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Select Styling */
+select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Button Styling */
+.calculate-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.calculate-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Price Display */
+.price-display {
+    font-size: 16px;
+    margin: 15px 0;
+    text-align: center;
+    color: #333;
+}
+
+/* Image Containers */
+.image-container {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+/* Fee Info */
+.fee-info {
+    text-align: center;
+    margin: 12px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 12px;
+}
+
+/* Info Groups */
+.info-group {
+    margin: 12px 0;
+}

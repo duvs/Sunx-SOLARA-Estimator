@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Solara Price Calculator</title>
+   <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+   <div class="container">
+       <h1>SOLARA PRICE CALCULATOR</h1>
+
+       <div class="input-group">
+           <label for="designSelection">Design Selection:</label>
+           <select id="designSelection" onchange="updateOptions(); updateImage();">
+               <option value="D1">D1: With 4 Posts</option>
+               <option value="D2">D2: With 6 Posts</option>
+           </select>
+       </div>
+
+       <div id="pergolaImageContainer" class="image-container">
+           <img id="pergolaImage" src="images/d1_pergola.jpg" alt="Pergola Design" width="400">
+       </div>
+
+       <div class="input-group">
+           <label for="lengthSelection">Length:</label>
+           <select id="lengthSelection" onchange="updateProjections()"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="projectionSelection">Projection:</label>
+           <select id="projectionSelection"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="heightSelection">Height:</label>
+           <select id="heightSelection"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="colorSelection">Color:</label>
+           <select id="colorSelection"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="mountingType">Mounting Type:</label>
+           <select id="mountingType">
+               <option value="Freestanding">Freestanding</option>
+               <option value="Wall Mounted">Wall Mounted</option>
+           </select>
+       </div>
+
+       <div class="input-group">
+           <label for="ledLights">LED Perimeter:</label>
+           <select id="ledLights" onchange="updateLEDImage()">
+               <option value="No">No</option>
+               <option value="Yes">Yes</option>
+           </select>
+       </div>
+
+       <div id="ledImageContainer" class="image-container">
+           <img id="ledImage" src="images/color_led.jpg" alt="LED Lights" width="400" style="display: none;">
+       </div>
+
+       <div class="input-group">
+           <label for="electricHeaters">Electric Heaters:</label>
+           <select id="electricHeaters"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="fanBeams">Fan Beams:</label>
+           <select id="fanBeams"></select>
+       </div>
+
+       <div class="info-group">
+           <p id="installationFee" class="fee-info">Installation Fee: $1,500</p>
+       </div>
+
+       <div class="input-group">
+           <label for="permitRequirement">Permit Requirements:</label>
+           <select id="permitRequirement" onchange="updatePermitFee()">
+               <option value="no">No - Standard Installation ($400/footer)</option>
+               <option value="yes">Yes - Permit Required ($600/footer)</option>
+           </select>
+       </div>
+
+       <div class="info-group">
+           <p id="permitFee" class="fee-info">Permit & Engineering Fee: $0.00</p>
+       </div>
+
+       <div class="input-group">
+           <label for="footerCount">Number of Concrete Footers:</label>
+           <select id="footerCount"></select>
+       </div>
+
+       <button id="calculateButton" class="calculate-btn">Calculate Price</button>
+       <p id="priceDisplay" class="price-display">Price: $0.00</p>
+       <button id="printOrderButton" class="print-btn">Print Order</button>
+   </div>
+
+   <div class="container">
+       <h2>Motorized Screen Price Calculator</h2>
+
+       <div class="input-group">
+           <label for="screenHeight">Screen Height:</label>
+           <select id="screenHeight" onchange="updateScreenProjections()"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="screenWidth">Screen Width:</label>
+           <select id="screenWidth"></select>
+       </div>
+
+       <div class="input-group">
+           <label for="linearFeet">Total Linear Feet (Add all sides you want to screen):</label>
+           <input type="number" id="linearFeet" min="0" step="0.1" class="form-control">
+       </div>
+
+       <div class="input-group">
+           <label for="screenCount">Number of Individual Screens:</label>
+           <select id="screenCount">
+               <option value="1">1 Screen</option>
+               <option value="2">2 Screens</option>
+               <option value="3">3 Screens</option>
+               <option value="4">4 Screens (Full Enclosure)</option>
+           </select>
+       </div>
+
+       <button onclick="calculateScreenPrice()" class="calculate-btn">Calculate Screen Price</button>
+       <p id="screenPrice" class="price-display">Screen Price: $0.00</p>
+
+       <div id="screenImageContainer" class="image-container">
+           <img id="screenImage" src="images/motorized-screen.jpg" alt="Motorized Screen" width="400">
+       </div>
+   </div>
+
+   <script src="assets/script.js"></script>
+</body>
+</html>
