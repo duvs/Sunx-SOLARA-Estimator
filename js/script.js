@@ -238,7 +238,7 @@ function calculateScreenPrice() {
   const screenWidth = document.querySelector("#screenWidth").value;
   const screenLinearFeet =
     document.querySelector("#screenLinearFeet").value || 0;
-  const numberScreens = document.querySelector("#numberScreens").value;
+  const numberScreens = document.querySelector("#numberScreens").value || 1;
 
   let errors = [];
 

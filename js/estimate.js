@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
     descriptionElement.innerHTML = `
       <ul>
         <li>Pergola Design ${estimateData.pergolaDesign.text}</li>
-        <li>Dimensions: ${estimateData.pergolaLength.text} ft (Length) x ${
+        <li>Dimensions: ${estimateData.pergolaLength.text} (Length) x ${
       estimateData.pergolaProjection.text
-    } ft (Projection)</li>
+    } (Projection)</li>
         <li>Height: ${estimateData.pergolaHeight.text}</li>
         <li>Structure Color: ${estimateData.pergolaColor.text}</li>
         <li>Mounting Type: ${estimateData.pergolaMounting.text}</li>
