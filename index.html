@@ -1,139 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Solara Price Calculator</title>
-   <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
-   <div class="container">
-       <h1>SOLARA PRICE CALCULATOR</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pergola SOLARA Calculator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/calculator.css" />
+  </head>
+  <body>
+    <noscript>
+      <div
+        style="
+          background: red;
+          color: white;
+          padding: 15px;
+          text-align: center;
+          font-size: 18px;
+        "
+      >
+        ⚠ JavaScript is disabled. Please enable JavaScript in your browser to
+        use this calculator.
+      </div>
+    </noscript>
+    <div id="jsWarning">
+      ⚠ JavaScript is not working properly. Please enable it.
+    </div>
+    <header>
+      <img src="img/logo-sunx.png" alt="Logo SunX" />
+      <h1>Pergola SOLARA Price Calculator</h1>
+    </header>
+    <main>
+      <div class="calculator">
+        <a id="lastEstimate" href="estimate.html" target="_blank"
+          >Last Estimate</a
+        >
+        <div class="pergolaCalculatorDiv">
+          <label for="pergolaDesign">Design:</label>
+          <select id="pergolaDesign" required>
+            <option value="D1" selected>D1: With 4 Posts</option>
+            <option value="D2">D2: With 6 Posts</option>
+          </select>
 
-       <div class="input-group">
-           <label for="designSelection">Design Selection:</label>
-           <select id="designSelection" onchange="updateOptions(); updateImage();">
-               <option value="D1">D1: With 4 Posts</option>
-               <option value="D2">D2: With 6 Posts</option>
-           </select>
-       </div>
+          <div class="pergolaImgDiv">
+            <img
+              src="img/D1-image.jpg"
+              id="pergolaImg"
+              alt="Pergola design D1"
+            />
+          </div>
 
-       <div id="pergolaImageContainer" class="image-container">
-           <img id="pergolaImage" src="images/d1_pergola.jpg" alt="Pergola Design" width="400">
-       </div>
+          <label for="pergolaLength">Length:</label>
+          <select id="pergolaLength" required>
+            <option value="13.1">13 ft 1 inch</option>
+            <option value="11.5">11 ft 6 inch</option>
+            <option value="9.84">9 ft 10 inch</option>
+            <option value="8.2" selected>8 ft 2 inch</option>
+          </select>
 
-       <div class="input-group">
-           <label for="lengthSelection">Length:</label>
-           <select id="lengthSelection" onchange="updateProjections()"></select>
-       </div>
+          <label for="pergolaProjection">Projection:</label>
+          <select id="pergolaProjection" required>
+            <option value="19.8">19 ft 8 inch</option>
+            <option value="18.0">18 ft 0 inch</option>
+            <option value="16.42">16 ft 5 inch</option>
+            <option value="14.8">14 ft 9 inch</option>
+            <option value="13.1">13 ft 1 inch</option>
+            <option value="11.5">11 ft 6 inch</option>
+            <option value="9.84">9 ft 10 inch</option>
+            <option value="8.2" selected>8 ft 2 inch</option>
+          </select>
 
-       <div class="input-group">
-           <label for="projectionSelection">Projection:</label>
-           <select id="projectionSelection"></select>
-       </div>
+          <label for="pergolaHeight">Height:</label>
+          <select id="pergolaHeight" required>
+            <option value="Standard" selected>
+              Standard Height: 2.7 M max height
+            </option>
+            <option value="Max">Max Height: 9 Ft and 10 inch</option>
+            <option value="Custom">
+              Custom Height: Call office for pricing
+            </option>
+          </select>
 
-       <div class="input-group">
-           <label for="heightSelection">Height:</label>
-           <select id="heightSelection"></select>
-       </div>
+          <label for="pergolaColor">Color:</label>
+          <select id="pergolaColor" required>
+            <option value="RAL7016" selected>RAL7016 Arctic Dark Grey</option>
+            <option value="RAL9016">RAL 9016 Traffic White</option>
+            <option value="Custom">
+              Custom Color: Call office for pricing
+            </option>
+          </select>
 
-       <div class="input-group">
-           <label for="colorSelection">Color:</label>
-           <select id="colorSelection"></select>
-       </div>
+          <label for="pergolaMounting">Mounting Type:</label>
+          <select id="pergolaMounting" required>
+            <option value="Freestanding" selected>Freestanding</option>
+            <option value="Wall">Wall Mounted</option>
+          </select>
 
-       <div class="input-group">
-           <label for="mountingType">Mounting Type:</label>
-           <select id="mountingType">
-               <option value="Freestanding">Freestanding</option>
-               <option value="Wall Mounted">Wall Mounted</option>
-           </select>
-       </div>
+          <label for="pergolaLedPerimeter">LED Perimeter:</label>
+          <select id="pergolaLedPerimeter" required>
+            <option value="No" selected>No</option>
+            <option value="Yes">Yes</option>
+          </select>
 
-       <div class="input-group">
-           <label for="ledLights">LED Perimeter:</label>
-           <select id="ledLights" onchange="updateLEDImage()">
-               <option value="No">No</option>
-               <option value="Yes">Yes</option>
-           </select>
-       </div>
+          <div class="imgDiv" id="ledImgDiv" style="display: none">
+            <img src="img/color_led.jpg" alt="LED Lights" />
+          </div>
 
-       <div id="ledImageContainer" class="image-container">
-           <img id="ledImage" src="images/color_led.jpg" alt="LED Lights" width="400" style="display: none;">
-       </div>
+          <label for="pergolaHeaters">Electric Heaters:</label>
+          <input
+            type="number"
+            id="pergolaHeaters"
+            value="0"
+            min="0"
+            max="10"
+            required
+          />
 
-       <div class="input-group">
-           <label for="electricHeaters">Electric Heaters:</label>
-           <select id="electricHeaters"></select>
-       </div>
+          <label for="pergolaFans">Fan Beams:</label>
+          <input
+            type="number"
+            id="pergolaFans"
+            value="0"
+            min="0"
+            max="10"
+            required
+          />
 
-       <div class="input-group">
-           <label for="fanBeams">Fan Beams:</label>
-           <select id="fanBeams"></select>
-       </div>
+          <label for="pergolaInstallationFee">Installation Fee:</label>
+          <input
+            type="text"
+            id="pergolaInstallationFee"
+            value="$1,500"
+            readonly
+          />
 
-       <div class="info-group">
-           <p id="installationFee" class="fee-info">Installation Fee: $1,500</p>
-       </div>
+          <label for="pergolaPermitRequired">Permit Requirements:</label>
+          <select id="pergolaPermitRequired" required>
+            <option value="No" selected>
+              No - Standard Installation ($400/footer)
+            </option>
+            <option value="Yes">Yes - Permit Required ($600/footer)</option>
+          </select>
+          <input
+            type="text"
+            id="pergolaPermitFee"
+            value="Permit & Engineering Fee: $0.00"
+            readonly
+          />
 
-       <div class="input-group">
-           <label for="permitRequirement">Permit Requirements:</label>
-           <select id="permitRequirement" onchange="updatePermitFee()">
-               <option value="no">No - Standard Installation ($400/footer)</option>
-               <option value="yes">Yes - Permit Required ($600/footer)</option>
-           </select>
-       </div>
+          <label for="pergolaFooter">Number of Concrete Footers:</label>
+          <input
+            type="number"
+            id="pergolaFooter"
+            value="0"
+            min="0"
+            max="10"
+            required
+          />
 
-       <div class="info-group">
-           <p id="permitFee" class="fee-info">Permit & Engineering Fee: $0.00</p>
-       </div>
+          <button type="button" id="calculatePergolaBtn">
+            Calculate SOLARA Price
+          </button>
 
-       <div class="input-group">
-           <label for="footerCount">Number of Concrete Footers:</label>
-           <select id="footerCount"></select>
-       </div>
+          <div id="pergolaResult" class="result" style="display: none">
+            <p id="pergolaResultText"></p>
+          </div>
 
-       <button id="calculateButton" class="calculate-btn">Calculate Price</button>
-       <p id="priceDisplay" class="price-display">Price: $0.00</p>
-       <button id="printOrderButton" class="print-btn">Print Order</button>
-   </div>
+          <h2>Customer Information</h2>
 
-   <div class="container">
-       <h2>Motorized Screen Price Calculator</h2>
+          <div class="customerInfo">
+            <form id="clientForm">
+              <label for="clientNameInput">Full Name:</label>
+              <input
+                type="text"
+                id="clientNameInput"
+                placeholder="Enter a Full Name"
+                required
+                pattern="^[a-zA-Z\s]+$"
+                title="Only letters and spaces are allowed"
+              />
 
-       <div class="input-group">
-           <label for="screenHeight">Screen Height:</label>
-           <select id="screenHeight" onchange="updateScreenProjections()"></select>
-       </div>
+              <label for="clientAddressInput">Address:</label>
+              <input
+                type="text"
+                id="clientAddressInput"
+                placeholder="Enter an Address"
+                required
+                pattern="^[a-zA-Z0-9\s,.-]+$"
+                title="Only letters, numbers, spaces, commas, dots, and hyphens are allowed"
+              />
 
-       <div class="input-group">
-           <label for="screenWidth">Screen Width:</label>
-           <select id="screenWidth"></select>
-       </div>
+              <label for="clientPhoneInput">Phone:</label>
+              <input
+                type="tel"
+                id="clientPhoneInput"
+                placeholder="Enter a Phone Number"
+                required
+                pattern="^\+?[0-9]{10,15}$"
+                title="Enter a valid phone number (10-15 digits, optional + at start)"
+              />
 
-       <div class="input-group">
-           <label for="linearFeet">Total Linear Feet (Add all sides you want to screen):</label>
-           <input type="number" id="linearFeet" min="0" step="0.1" class="form-control">
-       </div>
+              <label for="clientEmailInput">Email:</label>
+              <input
+                type="email"
+                id="clientEmailInput"
+                placeholder="Enter an Email"
+                pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                title="Enter a valid email address"
+              />
 
-       <div class="input-group">
-           <label for="screenCount">Number of Individual Screens:</label>
-           <select id="screenCount">
-               <option value="1">1 Screen</option>
-               <option value="2">2 Screens</option>
-               <option value="3">3 Screens</option>
-               <option value="4">4 Screens (Full Enclosure)</option>
-           </select>
-       </div>
+              <button type="submit" id="generateEstimateBtn">
+                Generate Estimate
+              </button>
+              <button type="reset">Clear</button>
+            </form>
+          </div>
+        </div>
 
-       <button onclick="calculateScreenPrice()" class="calculate-btn">Calculate Screen Price</button>
-       <p id="screenPrice" class="price-display">Screen Price: $0.00</p>
+        <div class="motorizedScreenDiv">
+          <h2>Motorized Screen Price Calculator</h2>
 
-       <div id="screenImageContainer" class="image-container">
-           <img id="screenImage" src="images/motorized-screen.jpg" alt="Motorized Screen" width="400">
-       </div>
-   </div>
+          <form id="screenForm">
+            <label for="screenHeight">Screen Height:</label>
+            <select id="screenHeight" required>
+              <option value="6 ft 7 inch" selected>6 ft 7 inch</option>
+              <option value="8 ft 2 inch">8 ft 2 inch</option>
+              <option value="9 ft 10 inch">9 ft 10 inch</option>
+            </select>
 
-   <script src="assets/script.js"></script>
-</body>
+            <label for="screenWidth">Screen Width:</label>
+            <select id="screenWidth" required>
+              <option value="4 ft 11 inch" selected>4 ft 11 inch</option>
+              <option value="6 ft 7 inch">6 ft 7 inch</option>
+              <option value="8 ft 2 inch">8 ft 2 inch</option>
+              <option value="9 ft 10 inch">9 ft 10 inch</option>
+              <option value="11 ft 5 inch">11 ft 5 inch</option>
+              <option value="13 ft 1 inch">13 ft 1 inch</option>
+              <option value="14 ft 9 inch">14 ft 9 inch</option>
+              <option value="16 ft 4 inch">16 ft 4 inch</option>
+              <option value="19 ft 8 inch">19 ft 8 inch</option>
+            </select>
+
+            <label for="screenLinearFeet"
+              >Total Linear Feet (Add all sides you want to screen):</label
+            >
+            <input
+              type="number"
+              name="screenLinearFeet"
+              id="screenLinearFeet"
+              placeholder="Enter linear feet"
+              required
+            />
+
+            <label for="numberScreens">Number of Individual Screens:</label>
+            <input
+              type="number"
+              name="numberScreens"
+              id="numberScreens"
+              value="1"
+              min="1"
+              max="4"
+              placeholder="Enter number of screens"
+            />
+
+            <button type="submit" id="calculateScreenBtn">
+              Calculate Screen Price
+            </button>
+          </form>
+
+          <div id="screenResult" class="result" style="display: none">
+            <p id="screenResultText"></p>
+            <img src="img/motorized-screen.jpg" alt="Motorized Screen" />
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        &copy; 2025. Originally created by Sunx. Enhanced & maintained by
+        WittyLab.
+      </p>
+    </footer>
+    <script src="js/script.js" type="module"></script>
+  </body>
 </html>
