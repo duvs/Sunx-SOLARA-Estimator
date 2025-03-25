@@ -306,16 +306,13 @@ function calculateScreenPrice() {
   let totalSquaredFeetTxt = `Total Square Feet: ${totalSqFt.toFixed(0)}`;
 
   if (totalPrice) {
-    let totalPricetxt = `Total Screen Cost: $${totalPrice.toFixed(
-      2
-    )}${discountText}`;
     document.querySelector(
       "#screenResultText"
     ).innerHTML = `Price per Square Foot: $${pricePerSqFt.toFixed(2)}<br>
     ${totalSquaredFeetTxt}<br>
     ${totalLinearFeetTxt}<br>
     ${numberScreensTxt}<br>
-    ${totalPricetxt}`;
+    Total Screen Cost: $${totalPrice.toFixed(2)}${discountText}`;
 
     let screenDetails = [
       screenHeightTxt,
@@ -326,7 +323,7 @@ function calculateScreenPrice() {
 
     let screenData = {
       screenDetails,
-      totalPricetxt,
+      totalPrice,
     };
 
     estimateData.screenData = screenData;
@@ -395,6 +392,11 @@ function generateEstimate() {
   }
 
   calculatePergolaPrice();
+
+  if (estimateData.screenData) {
+    estimateData.projectPrice =
+      estimateData.formData.totalPrice + estimateData.screenData.totalPrice;
+  }
 
   let clientInfo = { clientName, clientAddress, clientPhone, clientEmail };
 

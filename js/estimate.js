@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const clientInfo = estimateData.clientInfo;
   const formData = estimateData.formData;
   const screenData = estimateData.screenData || {};
+  const projectPrice = estimateData.projectPrice || formData.totalPrice;
 
   if (!estimateData) {
     alert("No estimate data found. Please generate an estimate first.");
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setTextContent("#permitFee", `${formData.permitFee.toFixed(2)}`);
   setTextContent("#totalPrice", `${formData.totalPrice.toFixed(2)}`);
   setTextContent("#estimateDate", new Date().toLocaleDateString());
+  setTextContent("#projectPrice", `${projectPrice.toFixed(2)}`);
 
   const descriptionElement = document.querySelector("#description");
   if (descriptionElement) {
@@ -72,7 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
     Array.isArray(screenDetails) &&
     screenDetails.length > 0
   ) {
-    setTextContent("#totalPriceScreen", screenData.totalPricetxt);
+    setTextContent("#totalPriceScreen", screenData.totalPrice.toFixed(2));
+    document.querySelector("#pergolaCost").style.display = "block";
     document.querySelector("#screenDetails").style.display = "block";
     screenDetails.forEach((details) => {
       const li = document.createElement("li");
