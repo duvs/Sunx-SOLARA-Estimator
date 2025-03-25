@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const estimateData = JSON.parse(localStorage.getItem("estimateData"));
   const clientInfo = estimateData.clientInfo;
   const formData = estimateData.formData;
-  const screenData = estimateData.screenData;
+  const screenData = estimateData.screenData || {};
 
   if (!estimateData) {
     alert("No estimate data found. Please generate an estimate first.");
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setTextContent("#permitFee", `${formData.permitFee.toFixed(2)}`);
   setTextContent("#totalPrice", `${formData.totalPrice.toFixed(2)}`);
   setTextContent("#estimateDate", new Date().toLocaleDateString());
-  setTextContent("#totalPriceScreen", screenData.totalPricetxt);
 
   const descriptionElement = document.querySelector("#description");
   if (descriptionElement) {
@@ -67,9 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (screenDetailsList && Array.isArray(screenData.screenDetails)) {
+  const screenDetails = screenData.screenDetails || [];
+  if (
+    screenDetailsList &&
+    Array.isArray(screenDetails) &&
+    screenDetails.length > 0
+  ) {
+    setTextContent("#totalPriceScreen", screenData.totalPricetxt);
     document.querySelector("#screenDetails").style.display = "block";
-    screenData.screenDetails.forEach((details) => {
+    screenDetails.forEach((details) => {
       const li = document.createElement("li");
       li.textContent = details;
 
